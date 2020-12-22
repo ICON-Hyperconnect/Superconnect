@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Profile
+  </title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+</head>
+<style>
+  .center{
+    text-align: center;
+  }
+  .balance {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .italics {
+  font-style: italic;
+  }
+  body{
+  margin: 0;
+  }
+  nav{
+  background: cornflowerblue;
+  padding: 20px 10px;
+  }
+  nav ul{
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0;
+  }
+  nav li{
+  list-style-type: none;
+  display: inline-block;
+  margin: 0 10px 0 0;
+  }
+  nav a{
+  color:bisque;
+  font-size: 18px;
+  background:rgb(49, 105, 170);
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  border-radius: 10px;
+  }
+.header{
+   text-align: center;
+  }
+
+  main, header{
+  max-width: 960px;
+  margin: 30px auto;
+  padding: 50px 80px;
+  color: black;
+  }
+  form, main, header{
+    width:70%;
+    margin:0 auto;
+  }
+  table {
+    padding: 50px 50px;
+  }
+
+  h3{
+    text-align: center;
+    padding-top: 30px;
+  }
+  div {
+  background: hsl(0, 0%, 95%);
+  padding: 12px;
+  border-radius: 4px;
+  }
+
+  div > h3 {
+  word-wrap: break-word;
+  }
+  div > p {
+  word-wrap: break-word;
+  }
+  div:not(:last-child) {
+  margin-bottom: 12px;
+  }
+  .display_amount{
+    text-align: center;
+    display: inline-block;
+  }
+</style>
+<body>
+ 
+ <nav>
+   <ul>
+     <li>
+       <form action="/">
+         <input class="button-primary" type="submit" value="Home" /></form>
+     </li>
+     <li>
+       <form action="/stats">
+         <input class="button-primary" type="submit" value="Stats" /></form>
+     </li>
+
+     <% if (user) { %>
+     <li>
+       <form action="/auth/logout">
+         <input class="button-primary" type="submit" value="Logout" /></form>
+     </li>
+     <li>
+       <form action="/profile">
+         <input class="button-primary" type="submit" value="Profile" /></form>
+     </li>
+
+     <% } else { %>
+     <li>
+       <form action="/auth/twitter">
+         <input class="button-primary" type="submit" value="Login With Twitter" /></form>
+     </li>
+     <% } %>
+
+   </ul>
+ </nav>
+
+  <main>
+    <h1 class="header">Welcome to your profile <%= user.username %></h1>
+    <div class="profile">
+      <table>
+        <tr>
+          <td class='left'>Address</td>
+          <td class="italics">
+            <a href="https://bicon.tracker.solidwallet.io/address/<%= user.wallet %>"><%= user.wallet %></a>
+
+
+          </td>
+        </tr>
+        <tr>
+          <td>Private Key</td>
+          <td><button id="reveal" class="button-primary">Reveal</button></td>
+        <div class="key">
+          <p class='italics'><%= user.p_key %></p>
+        </div>                               
+      </tr>
+      </table>
+
+    </div>
+    
+    <div class="balance">
+      <div class="display_amount">
+        <h5>ICX Balance</h5>
+        <p class="balance"><%= balance %></p>
+      </div>
+      <div class="display_amount">
+        <h5>Superconnect SENT</h5>
+        <p><%= user.sent %></p>
+      </div>
+      <div class="display_amount">
+        <h5>Superconnect RECEIVED</h5>
+        <p><%= user.received %></p>
+      </div>
+      
+    </div>
+    <div class="transaction">
+      <h3>Send ICX</h3>
+      <form action='/profile'method="POST">
+        <label required class="form-control" for='address'>Receive Address</label>
+        <input class="u-full-width" type='text' name='address' id='address' />
+        <label for='amount'>Amount</label>
+        <input required class="u-full-width" type="text" name='amount' id='amount' class="form-control" />
+        <button type="submit" class="button-primary center">Send ICX</button>
+      </form>
+    </div>
+  </main>
+ 
+</body>
+
+</html>

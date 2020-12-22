@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Homepage
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href='./styles.css' >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  </head>
+  <style>
+    body {
+      margin: 0; 
+    }
+
+    nav {
+      background: cornflowerblue;
+      padding: 20px 10px;
+    }
+
+    nav ul {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    nav li {
+      list-style-type: none;
+      display: inline-block;
+      margin: 0 10px 0 0;
+      text-align: right;
+    }
+
+    nav a {
+      color: bisque;
+      font-size: 18px;
+      background: rgb(49, 105, 170);
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+      border-radius: 10px;
+    }
+
+    main,
+    header {
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 0 10px;
+      color: black;
+    }
+  </style>
+  <nav>
+    <ul>
+      <li>
+        <form action="/">
+          <input class="button-primary" type="submit" value="Home" /></form>
+      </li>
+       <li>
+         <form action="/stats">
+           <input class="button-primary" type="submit" value="Stats" /></form>
+       </li>
+      
+      <% if (user) { %>
+        <li>
+          <form action="/auth/logout">
+            <input class="button-primary" type="submit" value="Logout" /></form>
+        </li>
+        <li>
+          <form action="/profile">
+            <input class="button-primary" type="submit" value="Profile" /></form>
+        </li>
+       
+
+            
+      <% } else { %>
+        <li>
+          <form action="/auth/twitter">
+            <input class="button-primary" type="submit" value="Login With Twitter" /></form>
+        </li>
+        
+        
+        <% } %>
+      
+    </ul>
+  </nav>
+  <header>
+    <h4>Welcome to Superconnect ICX</h4>
+  </header>
+
+
+  
+  
+</html>

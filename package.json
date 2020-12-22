@@ -1,0 +1,25 @@
+{
+  "name": "superconnect-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "icon-sdk-js": "0.0.18",
+    "jquery": "^3.5.1",
+    "mongoose": "^5.10.7",
+    "nodemon": "^2.0.4",
+    "passport": "^0.4.1",
+    "passport-twitter": "^1.0.4",
+    "twit": "^2.2.11"
+  },
+  "devDependencies": {},
+  "description": ""
+}
